@@ -362,8 +362,11 @@ const Cell = React.createClass({
           }
         }
       }
+
       if (focusInGrid) {
-        ReactDOM.findDOMNode(this).focus();
+        if (this.props.cellMetaData.gridKey === this.props.cellMetaData.selected.gridKeySelected) {
+          ReactDOM.findDOMNode(this).focus();
+        }
       }
     }
   },

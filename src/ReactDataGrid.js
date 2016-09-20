@@ -99,7 +99,8 @@ const ReactDataGrid = React.createClass({
     }),
     onRowClick: React.PropTypes.func,
     onGridKeyUp: React.PropTypes.func,
-    onGridKeyDown: React.PropTypes.func
+    onGridKeyDown: React.PropTypes.func,
+    gridKey: React.PropTypes.string
   },
 
   getDefaultProps(): {enableCellSelect: boolean} {
@@ -745,7 +746,7 @@ const ReactDataGrid = React.createClass({
     let col = this.getColumn(idx);
 
     if (ColumnUtils.canEdit(col, row, this.props.enableCellSelect) && !this.isActive()) {
-      let selected = Object.assign(this.state.selected, {idx: idx, rowIdx: rowIdx, active: true, initialKeyCode: keyPressed});
+      let selected = Object.assign(this.state.selected, {idx: idx, rowIdx: rowIdx, active: true, initialKeyCode: keyPressed, gridKeySelected: this.props.gridKey});
       this.setState({selected: selected});
     }
   },
@@ -826,7 +827,8 @@ const ReactDataGrid = React.createClass({
       openCellEditor: this.openCellEditor,
       onDragHandleDoubleClick: this.onDragHandleDoubleClick,
       onCellExpand: this.onCellExpand,
-      onRowExpandToggle: this.onRowExpandToggle
+      onRowExpandToggle: this.onRowExpandToggle,
+      gridKey: this.props.gridKey
     };
 
     let toolbar = this.renderToolbar();
