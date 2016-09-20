@@ -145,7 +145,7 @@ const Cell = React.createClass({
   getFormatter() {
     let col = this.props.column;
     if (this.isActive()) {
-      return <EditorContainer rowData={this.getRowData()} rowIdx={this.props.rowIdx} idx={this.props.idx} cellMetaData={this.props.cellMetaData} column={col} height={this.props.height}/>;
+      return <EditorContainer rowData={this.getRowData()} rowIdx={this.props.rowIdx} idx={this.props.idx} value={this.props.value} cellMetaData={this.props.cellMetaData} column={col} height={this.props.height}/>;
     }
 
     return this.props.column.formatter;
